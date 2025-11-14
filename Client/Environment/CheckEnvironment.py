@@ -30,8 +30,7 @@ class PhysicalMachineInfo:
     cpu_count: int | None
     memory_total: int | None
     memory_used: int | None
-    os: str | None
-    # todo
+    os: str | None  # todo
 
 
 def CheckDockerExist() -> str | None:
