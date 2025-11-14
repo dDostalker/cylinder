@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cylinder 仪表盘</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- 左侧导航栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">CYLINDER</h1>
+                <div class="logo-subtitle">控制中心</div>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-item active" data-page="index">
+                    <span class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </span>
+                    <span class="nav-text">首页</span>
+                </button>
+                <button class="nav-item" data-page="tasks">
+                    <span class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </span>
+                    <span class="nav-text">任务</span>
+                </button>
+                <button class="nav-item" data-page="history">
+                    <span class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </span>
+                    <span class="nav-text">历史</span>
+                </button>
+                <button class="nav-item" data-page="global-config">
+                    <span class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6m9-9h-6m-6 0H3"></path>
+                        </svg>
+                    </span>
+                    <span class="nav-text">全局配置</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- 主内容区域 -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!-- 首页内容 -->
+                <section class="page-content active" id="page-index">
+                    <div class="page-header">
+                        <h2 class="page-title">首页</h2>
+                        <div class="page-subtitle">系统概览与状态监控</div>
+                    </div>
+                    <div class="page-body">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-info">
+                                    <div class="stat-value">0</div>
+                                    <div class="stat-label">运行中任务</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    </svg>
+                                </div>
+                                <div class="stat-info">
+                                    <div class="stat-value">0</div>
+                                    <div class="stat-label">总任务数</div>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="stat-info">
+                                    <div class="stat-value">100%</div>
+                                    <div class="stat-label">系统健康度</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-card">
+                            <h3 class="card-title">系统状态</h3>
+                            <div class="status-list">
+                                <div class="status-item">
+                                    <span class="status-indicator active"></span>
+                                    <span class="status-text">系统运行正常</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 任务页面内容 -->
+                <section class="page-content" id="page-tasks">
+                    <div class="page-header">
+                        <h2 class="page-title">任务管理</h2>
+                        <div class="page-subtitle">查看和管理所有任务</div>
+                    </div>
+                    <div class="page-body">
+                        <div class="content-card">
+                            <h3 class="card-title">任务列表</h3>
+                            <div class="table-container">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>任务ID</th>
+                                            <th>任务名称</th>
+                                            <th>状态</th>
+                                            <th>创建时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="5" class="empty-state">暂无任务数据</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 历史页面内容 -->
+                <section class="page-content" id="page-history">
+                    <div class="page-header">
+                        <h2 class="page-title">历史记录</h2>
+                        <div class="page-subtitle">查看历史执行记录</div>
+                    </div>
+                    <div class="page-body">
+                        <div class="content-card">
+                            <h3 class="card-title">执行历史</h3>
+                            <div class="history-list">
+                                <div class="history-item">
+                                    <div class="history-time">暂无历史记录</div>
+                                    <div class="history-content">系统等待首次执行...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 全局配置页面内容 -->
+                <section class="page-content" id="page-global-config">
+                    <div class="page-header">
+                        <h2 class="page-title">全局配置</h2>
+                        <div class="page-subtitle">系统全局设置与参数配置</div>
+                    </div>
+                    <div class="page-body">
+                        <div class="content-card">
+                            <h3 class="card-title">配置项</h3>
+                            <div class="config-list">
+                                <div class="config-item">
+                                    <label class="config-label">配置项名称</label>
+                                    <input type="text" class="config-input" placeholder="请输入配置值">
+                                </div>
+                                <div class="config-item">
+                                    <label class="config-label">配置项名称</label>
+                                    <input type="text" class="config-input" placeholder="请输入配置值">
+                                </div>
+                            </div>
+                            <div class="config-actions">
+                                <button class="btn btn-primary">保存配置</button>
+                                <button class="btn btn-secondary">重置</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
+
