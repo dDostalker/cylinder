@@ -1,5 +1,5 @@
 import os
-import  re
+import re
 from enum import Enum
 
 from loguru import logger
@@ -18,34 +18,40 @@ class EnvironmentState(Enum):
     Exist = 2
     RightDocker = 4
 
+
 def CheckDockerExist() -> str | None:
     logger.info("check Docker Install State")
     docker_stauts = EnvironmentState.Unknow.value
     check_docker_pipen = os.popen(COMANND_DOCKER)
     docker_path = check_docker_pipen.read()
-    docker_path = docker_path.replace("\n","")
-    if docker_path:  
+    docker_path = docker_path.replace("\n", "")
+
+    if docker_path:
         logger.info(f"Get docker path {docker_path}")
         docker_stauts = EnvironmentState.Install.value
     else:
         logger.warning("Can't find docker")
         docker_stauts = EnvironmentState.Uninstall.value
+
     if docker_stauts > 0 and os.path.exists(docker_path):
         docker_stauts += EnvironmentState.Exist.value
-    # Todo when docker_stauts eq -1 chaeck,maybe not save in path    
+
+    # Todo when docker_stauts eq -1 chaeck,maybe not save in path
     if docker_stauts > 0:
         check_docker_command_pipen = os.popen(f"{docker_path} {COMANND_VERSION}")
         docker_version = check_docker_command_pipen.read()
         logger.info(f"docker version return is {docker_version}")
-        version_info = re.fullmatch(DOCKER_FILE_CHECK,docker_version)
-        if docker_version:
-           docker_stauts += EnvironmentState.RightDocker.value
+        version_info = re.fullmatch(DOCKER_FILE_CHECK, docker_version)
+        if version_info:
+            docker_stauts += EnvironmentState.RightDocker.value
         else:
             docker_stauts = EnvironmentState.Uninstall.value
+
     if docker_stauts > 7:
         return docker_path
     else:
         return None
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     CheckDockerExist()
